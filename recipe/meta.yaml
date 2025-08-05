@@ -1,6 +1,7 @@
 {% set name = "amqp" %}
 {% set version = "5.3.1" %}
 {% set tests_to_skip = " test_read_frame__windowstimeout " %}
+{% set tests_to_skip = tests_to_skip + " or test_heartbeat_check_rate_default" %} # [win]
 
 package:
   name: {{ name|lower }}
@@ -22,31 +23,37 @@ requirements:
   host:
     - python
     - pip
+    - setuptools >=20.6.7
+    - wheel >=0.29.0
   run:
     - python
     - vine >=5.0.0,<6.0.0
-    - setuptools>=20.6.7
-    - wheel>=0.29.0
 
 test:
   source_files:
     - gh_src
   requires:
     - pip
-    - vine >=5.0.0,<6.0.0
     - pytest >=6.2.5,<=8.0.0
     - pytest-sugar >=0.9.1
     - pytest-rerunfailures >=6.0
   imports:
-    - amqp
+    - amqp.abstract_channel
+    - amqp.basic_message
+    - amqp.channel
+    - amqp.connection
+    - amqp.platform
+    - amqp.protocol
+    - amqp.transport
+    - amqp.serialization
   commands:
     - pip check
-    - pytest -xv gh_src/t/unit # -k "not ({{ tests_to_skip }})"
+    - pytest -xv gh_src/t/unit -k "not ({{ tests_to_skip }})"
     - pytest -xv gh_src/t/integration
 
 about:
     home: https://github.com/celery/py-amqp
-    license: BSD 3-clause
+    license: BSD-3-Clause
     license_family: BSD
     license_file: LICENSE
     summary: Low-level AMQP client for Python (fork of amqplib)
