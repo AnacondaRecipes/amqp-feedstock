@@ -24,6 +24,9 @@ build:
     script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
 
 requirements:
+    build:
+        - {{ compiler("c") }}
+        - {{ stdlib("c") }}
     host:
         - python
         - cython
