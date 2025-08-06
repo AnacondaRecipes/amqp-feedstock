@@ -17,8 +17,10 @@ source:
       folder: gh_src
 
 build:
-    script_env:
-        - CELERY_ENABLE_SPEEDUPS
+    # This library has experimental support of speedups. To enable speedups, CELERY_ENABLE_SPEEDUPS 
+    # environment variable must be set during building/installation. Enable it when it will be stable.
+    # script_env:
+    #     - CELERY_ENABLE_SPEEDUPS=true
     number: 0
     skip: true  # [py<36]
     script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
