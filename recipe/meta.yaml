@@ -31,7 +31,8 @@ requirements:
         - {{ stdlib("c") }}
     host:
         - python
-        - cython
+        # For experimental support of speedups
+        #- cython
         - pip
         - setuptools >=20.6.7
         - wheel >=0.29.0
