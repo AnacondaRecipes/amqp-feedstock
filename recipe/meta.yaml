@@ -17,13 +17,16 @@ source:
       folder: gh_src
 
 build:
+    script_env:
+        - CELERY_ENABLE_SPEEDUPS
     number: 0
-    skip: true  # [py<38]
+    skip: true  # [py<36]
     script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
 
 requirements:
     host:
         - python
+        - cython
         - pip
         - setuptools >=20.6.7
         - wheel >=0.29.0
