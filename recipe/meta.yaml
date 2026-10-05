@@ -1,12 +1,8 @@
 {% set name = "amqp" %}
-{% set version = "5.3.1" %}
-{% set tests_to_skip = " test_read_frame__windowstimeout " %}
-{% set tests_to_skip = tests_to_skip + " or test_heartbeat_check_rate_default" %} # [win]
-{% set tests_to_skip = tests_to_skip + " or test_heartbeat_check_rate_four" %} # [win]
-{% set tests_to_skip = tests_to_skip + " or test_heartbeat_check_rate_wrong" %} # [win]
+{% set version = "5.4.0" %}
 
 package:
-    name: {{ name|lower }}
+    name: {{ name }}
     version: {{ version }}
 
 source:
@@ -22,13 +18,13 @@ build:
     # script_env:
     #     - CELERY_ENABLE_SPEEDUPS=true
     number: 0
-    skip: true  # [py<36]
+    skip: true  # [py<310]
     script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
 
 requirements:
     build:
-        - {{ compiler("c") }}
-        - {{ stdlib("c") }}
+        - {{ stdlib('c') }}
+        - {{ compiler('c') }}
     host:
         - python
         # For experimental support of speedups
@@ -39,6 +35,11 @@ requirements:
     run:
         - python
         - vine >=5.0.0,<6.0.0
+
+{% set tests_to_skip = " test_read_frame__windowstimeout " %}
+{% set tests_to_skip = tests_to_skip + " or test_heartbeat_check_rate_default" %} # [win]
+{% set tests_to_skip = tests_to_skip + " or test_heartbeat_check_rate_four" %} # [win]
+{% set tests_to_skip = tests_to_skip + " or test_heartbeat_check_rate_wrong" %} # [win]
 
 test:
     source_files:
