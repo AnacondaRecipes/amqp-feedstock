@@ -7,9 +7,9 @@ package:
 
 source:
     - url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-      sha256: cddc00c725449522023bad949f70fff7b48f0b1ade74d170a6f10ab044739432
+      sha256: aaa33987dcb6a7893955d3b4f537c5d4755addce1009929e63e5d18c1b51a0a7
     - url: https://github.com/celery/py-{{ name }}/archive/refs/tags/v{{ version }}.tar.gz
-      sha256: 865f165c1ff27052e5a6af249f42659b8fa21d25279a6a8a152580fca3b0de36
+      sha256: e3a5af985c8b3a115a7fd416d1c7f81236fbf2d11b22cd74089f15e383fdbacd
       folder: gh_src
 
 build:
