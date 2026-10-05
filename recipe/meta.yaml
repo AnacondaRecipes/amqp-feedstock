@@ -38,8 +38,8 @@ requirements:
 
 {% set tests_to_skip = " test_read_frame__windowstimeout " %}
 {% set tests_to_skip = tests_to_skip + " or test_heartbeat_check_rate_default" %} # [win or osx]
-{% set tests_to_skip = tests_to_skip + " or test_heartbeat_check_rate_four" %} # [win]
-{% set tests_to_skip = tests_to_skip + " or test_heartbeat_check_rate_wrong" %} # [win]
+{% set tests_to_skip = tests_to_skip + " or test_heartbeat_check_rate_four" %} # [win or osx]
+{% set tests_to_skip = tests_to_skip + " or test_heartbeat_check_rate_wrong" %} # [win or osx]
 
 test:
     source_files:
