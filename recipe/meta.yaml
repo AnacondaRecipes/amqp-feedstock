@@ -1,5 +1,5 @@
 {% set name = "amqp" %}
-{% set version = "5.4.0" %}
+{% set version = "5.4.2" %}
 
 package:
     name: {{ name }}
@@ -7,9 +7,9 @@ package:
 
 source:
     - url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-      sha256: aaa33987dcb6a7893955d3b4f537c5d4755addce1009929e63e5d18c1b51a0a7
+      sha256: 9362660c4a31150cf18e78cae2ce8aa1e929fc6c6739e69f6dd5dbea9c3edc82
     - url: https://github.com/celery/py-{{ name }}/archive/refs/tags/v{{ version }}.tar.gz
-      sha256: e3a5af985c8b3a115a7fd416d1c7f81236fbf2d11b22cd74089f15e383fdbacd
+      sha256: 70806d72d3bf12cc3bc6675c58b1b2db317147e3fcb351e8dfcca788da72a76f
       folder: gh_src
 
 build:
